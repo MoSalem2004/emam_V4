@@ -354,7 +354,7 @@
             </template>
           </v-progress-circular>
           <div style="color: var(--main-color); font-weight: bold">
-            عدد الأولاد
+            نسبة الأولاد
           </div>
         </div>
         <div
@@ -387,7 +387,7 @@
           </v-progress-circular>
 
           <div style="color: var(--main-color); font-weight: bold">
-            عدد البنات
+            نسبة البنات
           </div>
         </div>
       </div>
