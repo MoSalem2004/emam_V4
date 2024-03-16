@@ -84,9 +84,11 @@ export default {
 img {
   height: 200px;
 }
+
 .container {
   gap: 20px;
 }
+
 .feat {
   > div {
     background: #fff;
@@ -102,15 +104,11 @@ img {
     transition: 1.3s;
     transform: rotate(7deg);
     box-shadow: 0 0 1px var(--main-color);
+
     &.caption_2 {
       transform: rotate(-7deg);
     }
   }
-}
-@media (min-width: 1200px) {
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
 }
 
 @media (max-width: 767px) {
@@ -118,8 +116,14 @@ img {
     .container {
       flex-direction: column;
       gap: 60px;
+
       .feat {
-        width: 100% !important;
+        width: 100%;
+
+        > div {
+          top: 0;
+          transform: rotate(0);
+        }
       }
     }
   }

@@ -381,10 +381,10 @@ export default {
       Class: "",
 
       value: false,
-      Name1: "Mo",
-      Name2: "Ahmed",
-      Name3: "Salem",
-      email: "Mo@mo.com",
+      Name1: "",
+      Name2: "",
+      Name3: "",
+      email: "",
       Data: [],
       ShowAddAdmin: null,
       firstNameRules1: [
@@ -408,7 +408,7 @@ export default {
           return "يجب كتابة الإسم بصورة صحيحة";
         },
       ],
-      phone: "01012344566",
+      phone: "",
       phoneRules: [
         async (value) => {
           const q_1 = query(
@@ -427,7 +427,7 @@ export default {
           return "يجب إدخال رقم صالح";
         },
       ],
-      password: "1234",
+      password: "",
       passRules: [
         (value) => {
           if (value?.length >= 4) return true;
@@ -485,7 +485,6 @@ export default {
     },
     AddBorder(e) {
       e.target.style.cssText = "border-color: var(--main-color) !important;";
-      console.log(e.target);
     },
     // div.event.target.style.border = "1px solid var(--main-color)";
     async Register() {
@@ -526,7 +525,6 @@ export default {
         }
       }
       // Test The class
-      console.log(this.lang);
       if (MainState) {
         if (this.Class === "") {
           this.ErrorMsg = "يجب إختيار فرقتك الدراسية ";
@@ -537,7 +535,6 @@ export default {
         }
       }
       // Test The Location
-      console.log(this.selectedPlace);
       if (MainState) {
         if (this.selectedPlace !== "") {
           MainState = true;
@@ -600,10 +597,8 @@ export default {
           return new Promise((resolve, reject) => {
             bcrypt.hash(password.toString(), saltRounds, (err, hash) => {
               if (err) {
-                console.error(err);
                 reject(err);
               } else {
-                console.log("كلمة المرور المشفرة:", hash);
                 resolve(hash);
               }
             });
@@ -639,7 +634,6 @@ export default {
     select_1() {
       this.step++;
       setTimeout(() => {
-        console.log(this.type);
         if (this.type === "معهد أعوان القضاء") {
           document.querySelector(".selecte_2 > span:last-child").style.display =
             "none";
@@ -676,7 +670,6 @@ export default {
           e.onclick = () => {
             this.Class = e.innerHTML;
             this.Selector = true;
-            console.log(this.Class);
             // localStorage.setItem("updateType", this.type);
             // localStorage.setItem("updateLang", this.lang);
             // localStorage.setItem("updateClass", this.class);

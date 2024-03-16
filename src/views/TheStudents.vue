@@ -1,5 +1,9 @@
 <template>
-  <div class="TheStudents" style="margin-top: -20px; padding-bottom: 50px">
+  <div
+    class="TheStudents"
+    id="TheStudents"
+    style="margin-top: -20px; padding-bottom: 50px"
+  >
     <div class="container relative" style="padding-top: 160px">
       <div
         v-if="Info"
@@ -118,6 +122,7 @@
         class="main_Overlay"
         v-if="Sliders"
         @click="Sliders = !Sliders"
+        style="z-index: 100"
       ></div>
       <div
         v-if="Sliders"
@@ -248,11 +253,11 @@
             style="background: #fafafa; padding: 10px; border-radius: 5px"
             @click="Sliders = !Sliders"
           />
-          <font-awesome-icon
+          <!-- <font-awesome-icon
             :icon="['fas', 'magnifying-glass']"
             style="background: #fafafa; padding: 10px; border-radius: 5px"
             @click="SearchFunction"
-          />
+          /> -->
           <font-awesome-icon
             :icon="['fas', 'circle-info']"
             color="info
@@ -262,9 +267,9 @@
           />
         </div>
       </nav>
-      <div class="main_Overlay" v-if="Search" @click="Search = !Search"></div>
+      <!-- <div class="main_Overlay" v-if="Search" @click="Search = !Search"></div> -->
 
-      <v-text-field
+      <!-- <v-text-field
         label="ابحث في الأسماء"
         :rules="searchInput"
         class="border p-2.5 bg-white fixed z-10 rounded p-2.5 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
@@ -279,7 +284,7 @@
         >
           <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
         </div>
-      </v-text-field>
+      </v-text-field> -->
       <div
         style="
           display: flex;
@@ -547,8 +552,18 @@
       </div>
     </div>
 
-    <div class="main_Overlay" v-if="BIllShow" style="z-index: 101"></div>
-    <div class="main_Overlay" v-if="ResultShow" style="z-index: 101"></div>
+    <div
+      class="main_Overlay"
+      @click="BIllShowFunction"
+      v-if="BIllShow"
+      style="z-index: 101"
+    ></div>
+    <div
+      class="main_Overlay"
+      v-if="ResultShow"
+      style="z-index: 101"
+      @click="ResultShowFunction"
+    ></div>
     <div
       class="Main_Box BILL bg-white fixed z-10 rounded p-2.5 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 max-h-90 overflow-auto"
       style="z-index: 101; width: 90%"
@@ -697,6 +712,21 @@
             <div>التقدير</div>
             <div>{{ bill.appreciation }}</div>
           </div>
+          <div>
+            <div>الوقت</div>
+            <div>
+              {{
+                new Date(bill.Time.toMillis()).toLocaleString(["ar"], {
+                  weekday: "short",
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })
+              }}
+            </div>
+          </div>
         </div>
         <div class="small_box">
           <div>
@@ -744,6 +774,9 @@ const db = getFirestore(app);
 export default {
   name: "TheStudents",
   mounted() {
+    setTimeout(() => {
+      location.href = `${location.href}#TheStudents`;
+    }, 10);
     this.GetData();
 
     setTimeout(() => {
@@ -1034,6 +1067,7 @@ export default {
   width: 90%;
   text-align: center;
 }
+
 nav {
   background: #fff;
   padding: 15px;
@@ -1145,7 +1179,13 @@ nav {
     }
   }
 }
-
+table th,
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  color: var(--main-color);
+}
 @media (min-width: 1200px) {
 }
 

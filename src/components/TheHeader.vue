@@ -1,7 +1,5 @@
 <template>
   <div class="Header">
-    <p class="element" hidden>Welcome To The New World</p>
-    <p class="element" hidden>Welcome To The New World</p>
     <div class="container flex justify-between items-center gap-2.5">
       <div class="logo">
         <router-link to="/" class="flex items-center gap-2.5">
@@ -10,13 +8,7 @@
             alt="أكاديمية الإمام القانونية"
             class="h-24 rounded-full"
           />
-          <span
-            class="text-xl"
-            style="
-              font-weight: bold;
-              color: var(--main-color);
-              font-family: system-ui;
-            "
+          <span class="text-xl font-bold text-main-color"
             >أكاديمية الإمام القانونية</span
           >
         </router-link>
@@ -530,9 +522,6 @@ export default {
         }
       }
     }
-    // .mobile {
-    //   display: flex;
-    // }
   }
 }
 </style>
